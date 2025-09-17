@@ -97,7 +97,7 @@ public class Main {
 
         try {
             //define file values
-            File inFile = new File("Lecture5//data.txt");
+            File inFile = new File("data.txt");
             Scanner scanner = new Scanner(inFile);
 
             //input values from a file & add to array4
