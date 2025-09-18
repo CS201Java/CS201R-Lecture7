@@ -3,6 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Main {
 
@@ -97,18 +101,39 @@ public class Main {
 
         try {
             //define file values
-            File inFile = new File("Lecture5//data.txt");
+            File inFile = new File("data.txt");
             Scanner scanner = new Scanner(inFile);
+            FileWriter output = new FileWriter("output.txt");
+            PrintWriter report = new PrintWriter(output);
 
             //input values from a file & add to array4
             if (loadArray(array4, scanner) == -1){
                 System.out.println("Input is not valid");
             }
+            else {
+                for (ArrayList<Integer> rowList : array4){
+                    for (Integer value : rowList){
+                        System.out.printf("%4d", value);
+                        report.printf("%4d", value);
+                    }
+                    report.println();
+                    System.out.println();
+                }
+            }
             scanner.close();
+            report.close();
         }
 
         catch (FileNotFoundException e){
             System.out.println("Unable to open file");
+            return;
+        }
+        catch (IOException e){
+            System.out.println("An error occured during processing");
+            return;
+        }
+        catch (Exception e){
+            System.out.println("Exception occured during processing");
             return;
         }
 
