@@ -11,6 +11,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+import java.util.Random;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
 public class Main {
 
     public static void main(String[] args){
@@ -29,6 +42,10 @@ public class Main {
                 System.out.print(array1[r][c] + " ");
             System.out.println();
         }
+        System.out.println("\narray1[1] =        " + Arrays.toString(array1[1]));
+        System.out.println("array1.length =    " + array1.length);        
+        System.out.println("array1[1].length = " + array1[1].length);  
+
 
         //CREATING A 2D ARRAY AND ADDING ROW 0 (THE CONTENTS OF X)
         int[][] array2 = new int[5][6];
@@ -45,8 +62,22 @@ public class Main {
         for (int i = 0; i < array3.length; i++)
             sum += array3[i][0];
 
-        System.out.println(sum);
+        System.out.println("\nThe sum of the values in the 0th columns: " + sum);
 
+
+        System.out.println("\n2D ARRAYS:  EXAMPLE 4");
+        int[][] array4 = {{1, 2, 3, 4}, {5, 6}, {7, 8, 9}};
+        int maxSum = 0;
+
+        for (int i = 0; i < array4.length; i++){
+            sum = 0;
+            for (int j = 0; j < array4[i].length; j++){
+                sum += array4[i][j];
+            }
+            if (sum > maxSum)
+                maxSum = sum;
+        }
+        System.out.println("maxSum is: " + maxSum);
 
         System.out.println("\n2D ARRAYS:  YOU TRY IT");
         //YOU TRY IT:  CREATE A 2D ARRAY
@@ -73,49 +104,49 @@ public class Main {
         System.out.println("Column: " + largeCol + " has the largest total: " + largeTotal);
 
 
-        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 1");
+        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 6");
         //CREATE A 2D ARRAYLIST
-        ArrayList<ArrayList<Integer>> array4 = new ArrayList<>();  
+        ArrayList<ArrayList<Integer>> array6 = new ArrayList<>();  
         ArrayList<Integer> row1a = new ArrayList<>(Arrays.asList(1,2,3,4));
         ArrayList<Integer> row2a = new ArrayList<>(Arrays.asList(5,6,7,8));
         ArrayList<Integer> row3a = new ArrayList<>(Arrays.asList(9,10,11,12));        
-        array4.add(row1a);
-        array4.add(row2a);
-        array4.add(row3a);
-        for (ArrayList<Integer> rowList : array4){
+        array6.add(row1a);
+        array6.add(row2a);
+        array6.add(row3a);
+        for (ArrayList<Integer> rowList : array6){
             for (Integer value : rowList)
                 System.out.printf("%4d", value);
             System.out.println();
         }
 
-        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 2");
+        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 7");
         //CREATE A 2D ARRAYLIST
-        ArrayList<ArrayList<Integer>> array5 = new ArrayList<>();  
+        ArrayList<ArrayList<Integer>> array7 = new ArrayList<>();  
         ArrayList<Integer> row1b = new ArrayList<>(Arrays.asList(1,2,3,4));
         ArrayList<Integer> row2b = new ArrayList<>(Arrays.asList(8,7,6,5));
         ArrayList<Integer> row3b = new ArrayList<>(Arrays.asList(9,10,11,12));        
-        array5.add(row1b);
-        array5.add(row2b);
-        array5.add(row3b);
-        for (ArrayList<Integer> rowList : array5){
+        array7.add(row1b);
+        array7.add(row2b);
+        array7.add(row3b);
+        for (ArrayList<Integer> rowList : array7){
             for (Integer value : rowList)
                 System.out.printf("%4d", value);
             System.out.println();
         }
-        System.out.println("Comparing row 0 of Array4 & Array5: " + array4.get(0).equals(array5.get(0)));
-        System.out.println("Comparing row 1 of Array4 & Array5: " + array4.get(1).equals(array5.get(1)));
-        System.out.println("Comparing Array4 & Array5:          " + array4.equals(array5));
-        //Collections.sort(array5.get(1));
-        Collections.sort(array4.get(1), Collections.reverseOrder());
-        System.out.println("Comparing row 1 of Array4 & Array5: " + array4.get(1).equals(array5.get(1)));
-        Collections.sort(array5.get(1), Collections.reverseOrder());
-        System.out.println("Comparing Array4 & Array5:          " + array4.equals(array5));
+        System.out.println("\nComparing row 0 of Array6 & Array7: " + array6.get(0).equals(array7.get(0)));
+        System.out.println("Comparing row 1 of Array6 & Array7: " + array6.get(1).equals(array7.get(1)));
+        System.out.println("Comparing Array6 & Array7:          " + array6.equals(array7));
+        //Collections.sort(array6.get(1));
+        Collections.sort(array6.get(1), Collections.reverseOrder());
+        System.out.println("Comparing row 1 of Array6 & Array7: " + array6.get(1).equals(array7.get(1)));
+        Collections.sort(array7.get(1), Collections.reverseOrder());
+        System.out.println("Comparing Array6 & Array7:          " + array6.equals(array7));
 
 
 
-        System.out.println("\n2D ARRAYLISTS:  EXAMPLE 3");
+        System.out.println("\n2D ARRAYLISTS:  EXAMPLE 8");
         //CREATE A 2D ARRAYLIST
-        ArrayList<ArrayList<Integer>> array6 = new ArrayList<>();  
+        ArrayList<ArrayList<Integer>> array8 = new ArrayList<>();  
 
 
         try {
@@ -126,11 +157,11 @@ public class Main {
             PrintWriter report = new PrintWriter(output);
 
             //input values from a file & add to array4
-            if (loadArray(array6, scanner) == -1){
+            if (loadArray(array8, scanner) == -1){
                 System.out.println("Input is not valid");
             }
             else {
-                for (ArrayList<Integer> rowList : array6){
+                for (ArrayList<Integer> rowList : array8){
                     for (Integer value : rowList){
                         System.out.printf("%4d", value);
                         report.printf("%4d", value);
@@ -200,4 +231,3 @@ public class Main {
        return 1;
     }
 }
-
