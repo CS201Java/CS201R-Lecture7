@@ -1,4 +1,7 @@
 import java.util.Random;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
@@ -70,9 +73,50 @@ public class Main {
         System.out.println("Column: " + largeCol + " has the largest total: " + largeTotal);
 
 
-        System.out.println("2D ARRAYLISTS:  EXAMPLE 1");
+        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 1");
         //CREATE A 2D ARRAYLIST
         ArrayList<ArrayList<Integer>> array4 = new ArrayList<>();  
+        ArrayList<Integer> row1a = new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> row2a = new ArrayList<>(Arrays.asList(5,6,7,8));
+        ArrayList<Integer> row3a = new ArrayList<>(Arrays.asList(9,10,11,12));        
+        array4.add(row1a);
+        array4.add(row2a);
+        array4.add(row3a);
+        for (ArrayList<Integer> rowList : array4){
+            for (Integer value : rowList)
+                System.out.printf("%4d", value);
+            System.out.println();
+        }
+
+        System.out.println("\n\n2D ARRAYLISTS:  EXAMPLE 2");
+        //CREATE A 2D ARRAYLIST
+        ArrayList<ArrayList<Integer>> array5 = new ArrayList<>();  
+        ArrayList<Integer> row1b = new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> row2b = new ArrayList<>(Arrays.asList(8,7,6,5));
+        ArrayList<Integer> row3b = new ArrayList<>(Arrays.asList(9,10,11,12));        
+        array5.add(row1b);
+        array5.add(row2b);
+        array5.add(row3b);
+        for (ArrayList<Integer> rowList : array5){
+            for (Integer value : rowList)
+                System.out.printf("%4d", value);
+            System.out.println();
+        }
+        System.out.println("Comparing row 0 of Array4 & Array5: " + array4.get(0).equals(array5.get(0)));
+        System.out.println("Comparing row 1 of Array4 & Array5: " + array4.get(1).equals(array5.get(1)));
+        System.out.println("Comparing Array4 & Array5:          " + array4.equals(array5));
+        //Collections.sort(array5.get(1));
+        Collections.sort(array4.get(1), Collections.reverseOrder());
+        System.out.println("Comparing row 1 of Array4 & Array5: " + array4.get(1).equals(array5.get(1)));
+        Collections.sort(array5.get(1), Collections.reverseOrder());
+        System.out.println("Comparing Array4 & Array5:          " + array4.equals(array5));
+
+
+
+        System.out.println("\n2D ARRAYLISTS:  EXAMPLE 3");
+        //CREATE A 2D ARRAYLIST
+        ArrayList<ArrayList<Integer>> array6 = new ArrayList<>();  
+
 
         try {
             //define file values
@@ -82,11 +126,11 @@ public class Main {
             PrintWriter report = new PrintWriter(output);
 
             //input values from a file & add to array4
-            if (loadArray(array4, scanner) == -1){
+            if (loadArray(array6, scanner) == -1){
                 System.out.println("Input is not valid");
             }
             else {
-                for (ArrayList<Integer> rowList : array4){
+                for (ArrayList<Integer> rowList : array6){
                     for (Integer value : rowList){
                         System.out.printf("%4d", value);
                         report.printf("%4d", value);
@@ -114,7 +158,7 @@ public class Main {
 
     }
 
-    public static int loadArray(ArrayList<ArrayList<Integer>> array4, Scanner input){
+    public static int loadArray(ArrayList<ArrayList<Integer>> array, Scanner input){
 
         String inputLine;
         int rowCount = 0, colCount = 0, row = 0, col = 0;
@@ -148,7 +192,7 @@ public class Main {
 
        }
                    
-        for (ArrayList<Integer> rowList : array4){
+        for (ArrayList<Integer> rowList : array){
             for (Integer value : rowList)
                 System.out.printf("%4d", value);
             System.out.println();
